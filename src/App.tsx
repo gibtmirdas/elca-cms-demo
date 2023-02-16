@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -13,13 +12,17 @@ function App() {
         showStatus={false}
         showThumbs={false}
         interval={4000}
-        autoPlay={true}
+        autoPlay={true} // autoplay
         infiniteLoop={true}
         showIndicators={false}
       >
-        <div>
-          <img src="assets/01.jpg" />
-        </div>
+        {/* <div>
+          <div className='first'>
+            <div className='first-content'>
+              Yolo
+            </div>
+          </div>
+        </div> */}
         <div>
           <img src="assets/02.jpg" />
         </div>
