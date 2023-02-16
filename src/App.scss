@@ -1,0 +1,94 @@
+@font-face {
+    font-family: "lato_regular";
+    src: url("../public/assets/lato_regular.ttf");
+}
+@font-face {
+    font-family: "lato_black";
+    src: url("../public/assets/lato_black.ttf");
+}
+@font-face {
+    font-family: "lato_bold";
+    src: url("../public/assets/lato_bold.ttf");
+}
+
+body {
+    width: 100%;
+    background-color: black;
+}
+
+.bet {
+    font-family: "lato_regular", Fallback, sans-serif;
+    background-color: #2f6485;
+    color: white;
+    font-size: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(to right, rgba(47, 100, 133, 0.8), rgba(47, 100, 133, 1), rgb(47, 100, 133)),
+        url(../public/assets/ball.jpg);
+    color: White;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+
+    &__content {
+        font-weight: bold;
+    }
+    &__title {
+        font-weight: bold;
+        display: flex;
+        justify-content: start;
+    }
+
+    &__subtitle {
+        font-weight: bold;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-top: 18px;
+        margin-bottom: 32px;
+        &__carret {
+            padding: 0 18px;
+        }
+        &__small {
+            font-size: 0.75em;
+            font-weight: 100;
+        }
+    }
+
+    &__contenders {
+        display: flex;
+        justify-content: start;
+        font-family: "lato_bold", Fallback, sans-serif;
+        font-size: 1.66em;
+        font-weight: 900;
+    }
+
+    .bets {
+        font-weight: 300;
+        font-size: 0.75em;
+        display: flex;
+        flex-direction: row;
+        margin-top: 48px;
+        &__box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #21435c;
+            padding: 12px 120px;
+            margin-right: 18px;
+        }
+        &__quote {
+            margin-bottom: 6px;
+            font-weight: 100;
+        }
+        &__value {
+            font-family: "lato_bold", Fallback, sans-serif;
+        }
+    }
+}
