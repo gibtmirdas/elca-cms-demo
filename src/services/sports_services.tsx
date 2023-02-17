@@ -1,38 +1,17 @@
 import Cls from "../models/cls";
-import GameData, { GameCode } from "../models/game_data";
+import DayEventData from "../models/day_event_data";
+import GameData from "../models/game_data";
+import useRequest, { IAxiosResponse } from "./axios_service";
+
+
+export const GetEventOfDay = (): Promise<IAxiosResponse<DayEventData>> =>
+    useRequest<DayEventData>(`sports/event-of-the-day`);
 
 export async function sportServices() {
     const fetchData = () => {
-        return fetch('https://sports-events-api.loro.ch/api/sports/event-of-the-day'
-            , {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Credentials': 'true',
-                    'Access-Control-Allow-Methods': 'OPTIONS, GET, POST',
-                    'Access-Control-Allow-Headers': 'Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control',
-                },
-            }
-        ).catch(async function (err) {
-            return await fetch('data.json', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Credentials': 'true',
-                    'Access-Control-Allow-Methods': 'OPTIONS, GET, POST',
-                    'Access-Control-Allow-Headers': 'Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control',
-                },
-            });
-        }).then(function (response) {
-            return response.json();
+        return GetEventOfDay().then(response => {
+            return response.data
         })
-            .then(function (myJson) {
-                console.debug('FETCH', myJson);
-                var cls = (myJson['cls'] as Cls);
-                return cls;
-            });
     }
 
     const dataToGameData = (cls: Cls): GameData | null => {
@@ -54,13 +33,13 @@ export async function sportServices() {
             player2: pos0.b,
             gameType: pos0.pdesc,
             time: new Date(pos0.startDateTime),
-            code: GameCode.FOOT,
+            code: pos0.code,
             prices: prices,
         }
 
         return gameData;
     }
     var data = await fetchData();
-    var truc = dataToGameData(data)
-    return truc;
+    var gameData = dataToGameData(data!.cls)
+    return gameData;
 }

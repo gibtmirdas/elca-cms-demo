@@ -11,13 +11,12 @@ function App() {
 
   async function fetchData() {
     var data = await sportServices();
-    console.debug('setData', data);
     if (data)
       setData(data)
   }
 
   useEffect(() => {
-    fetchData()
+    fetchData();
     var fetchInterval = setInterval(fetchData, 1000 * 60 * 2);
     return () => {
       clearInterval(fetchInterval)
@@ -32,11 +31,11 @@ function App() {
         showStatus={false}
         showThumbs={false}
         interval={4000}
-        autoPlay={true} // autoplay
+        autoPlay={true}
         infiniteLoop={true}
         showIndicators={false}
         swipeable={false}
-        stopOnHover={true}
+        stopOnHover={false}
       >
         <div>
           <Bet data={data} />

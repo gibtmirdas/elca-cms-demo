@@ -1,17 +1,30 @@
-import GameData from "../models/game_data";
+import GameData, { GameCode } from "../models/game_data";
 
 interface BetProps {
     data: GameData | undefined
 }
 
+const sportLogo = (code: GameCode): string => {
+    switch (code) {
+        case GameCode.FOOT:
+            return "⚽️";
+        case GameCode.ICEH:
+            return "🏒";
+    }
+    return "😺"
+}
+
 const Bet: React.FunctionComponent<BetProps> = ({ data }) => {
+    if (!data) {
+        return <></>
+    }
     var time = `${data?.time.getHours()}:${data?.time.getMinutes()}`
     return <div className="bet">
         <div className="bet__content">
             <div className="bet__title">
                 EVENT OF THE DAY
             </div>
-            <div className="bet__subtitle">⚽️&nbsp;&nbsp;{data?.gameType}
+            <div className="bet__subtitle">{sportLogo(data!.code)}&nbsp;&nbsp;{data?.gameType}
                 <span className="bet__subtitle__carret">-</span>
                 <span className="bet__subtitle__small">Aujourd'hui | {time}</span>
             </div>

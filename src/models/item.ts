@@ -1,3 +1,5 @@
+import { GameCode } from "./game_data";
+
 export default interface Item {
     desc: string;
     pos: number;
@@ -11,7 +13,7 @@ export default interface Item {
     count: number;
     a: string;
     b: string;
-    code: string;
+    code: GameCode;
     etype: string;
     retailIndex: number;
     inRunningCalendar: boolean;

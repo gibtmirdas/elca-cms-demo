@@ -8,5 +8,6 @@ export default interface GameData {
 }
 
 export enum GameCode {
-    FOOT, BASKET
+    FOOT = "FOOT",
+    ICEH = "ICEH",
 }
