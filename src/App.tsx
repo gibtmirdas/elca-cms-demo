@@ -26,7 +26,7 @@ function App() {
   useEffect(() => {
     const refreshInterval = setInterval(() => {
       window.location.reload();
-    }, 1000 * 60 * 30);
+    }, 1000 * 60 * 10);
     return () => {
       clearInterval(refreshInterval)
     }
