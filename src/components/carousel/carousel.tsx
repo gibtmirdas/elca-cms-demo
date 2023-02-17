@@ -12,7 +12,7 @@ const CarouselAnimated: React.FunctionComponent<CarouselProps> = ({ data }) => {
         showArrows={false}
         showStatus={false}
         showThumbs={false}
-        interval={5000}
+        interval={7000}
         autoPlay={true}
         infiniteLoop={true}
         showIndicators={false}
