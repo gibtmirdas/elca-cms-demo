@@ -1,49 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import './App.scss';
-import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { sportServices } from './services/sports_services';
-import Bet from './components/bet';
 import GameData from './models/game_data';
+import CarouselAnimated from './components/carousel/carousel';
 
 function App() {
   const [data, setData] = useState<GameData>();
 
   async function fetchData() {
-    var data = await sportServices();
+    const data = await sportServices();
     if (data)
       setData(data)
   }
 
   useEffect(() => {
     fetchData();
-    var fetchInterval = setInterval(fetchData, 1000 * 60 * 2);
+    const fetchInterval = setInterval(fetchData, 1000 * 60 * 2);
     return () => {
       clearInterval(fetchInterval)
     }
   }, [])
 
+
+  useEffect(() => {
+    const refreshInterval = setInterval(() => {
+      window.location.reload();
+    }, 1000 * 60 * 30);
+    return () => {
+      clearInterval(refreshInterval)
+    }
+  }, [])
+
   return (
     <div className="App">
-      <Carousel
-        transitionTime={400}
-        showArrows={false}
-        showStatus={false}
-        showThumbs={false}
-        interval={4000}
-        autoPlay={true}
-        infiniteLoop={true}
-        showIndicators={false}
-        swipeable={false}
-        stopOnHover={false}
-      >
-        <div>
-          <Bet data={data} />
-        </div>
-        <div>
-          <img src="assets/02.jpg" />
-        </div>
-      </Carousel>
+      <CarouselAnimated data={data} />
     </div>
   );
 }
