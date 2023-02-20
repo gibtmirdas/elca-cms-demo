@@ -16,7 +16,7 @@ const sportLogo = (code: GameCode): string => {
 
 const Bet: React.FunctionComponent<BetProps> = ({ data }) => {
     if (!data) {
-        return <></>
+        return <div className="bet"></div>
     }
     const time = `${data?.time.getHours()}:${String(data?.time.getMinutes()).padStart(2, "0")}`
     return <div className="bet">
