@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
-    const fetchInterval = setInterval(fetchData, 1000 * 60 * 2);
+    const fetchInterval = setInterval(fetchData, 1000 * 5);
     return () => {
       clearInterval(fetchInterval)
     }
