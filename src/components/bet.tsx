@@ -18,7 +18,7 @@ const Bet: React.FunctionComponent<BetProps> = ({ data }) => {
     if (!data) {
         return <></>
     }
-    const time = `${data?.time.getHours()}:${data?.time.getMinutes()}`
+    const time = `${data?.time.getHours()}:${String(data?.time.getMinutes()).padStart(2, "0")}`
     return <div className="bet">
         <div className="bet__content">
             {data && <>
